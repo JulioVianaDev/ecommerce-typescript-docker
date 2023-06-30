@@ -1,4 +1,4 @@
-import express,{Response,NextFunction} from 'express';
+import express from 'express';
 import {json }from 'body-parser';
 import InitialRoute from './routes/initial'
 const app = express();
