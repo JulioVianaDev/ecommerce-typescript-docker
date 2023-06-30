@@ -4,7 +4,12 @@ import './App.css';
 import axios from 'axios'
 function App() {
   useEffect(()=>{
-    axios.get('http://localhost:3001')
+    // ipv4
+    // axios.get('http://backend:3001')
+    //   .then(res=>console.log(res.data))
+    //   .catch(err=>console.log(err.message))
+    // ipv6
+    axios.get('http://[::1]:3001')
       .then(res=>console.log(res.data))
       .catch(err=>console.log(err.message))
   },[])
