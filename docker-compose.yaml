@@ -6,6 +6,8 @@ services:
       - "3001:3001"
     volumes:
       - ./backend:/app
+    networks:
+      - minha-rede
   frontend:
     build: ./frontend
     ports:
@@ -16,3 +18,7 @@ services:
     tty: true
     depends_on:
       - backend 
+    networks:
+      - minha-rede
+networks:
+  minha-rede:
