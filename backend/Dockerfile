@@ -10,4 +10,5 @@ COPY . .
 
 EXPOSE 3001
 
-CMD [ "npx", "ts-node-dev", "--respawn", "--transpile-only", "src/index.ts" ]
+CMD [ "npx", "ts-node-dev", "--respawn", "--transpile-only", "--ignore-watch", "node_modules", "src" ]
+
