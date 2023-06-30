@@ -1,8 +1,12 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import styled from 'styled-components'
+import axios from 'axios'
 function App() {
+  useEffect(()=>{
+    axios.get('http://localhost:3001')
+      .then(res=>console.log(res.data))
+  },[])
   return (
     <div className="App">
       <header className="App-header">
