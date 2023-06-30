@@ -1,1 +1,3 @@
- cat /etc/hosts
+# Comando para pegar os hosts
+
+```cat /etc/hosts```
