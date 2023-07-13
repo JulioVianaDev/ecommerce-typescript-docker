@@ -9,7 +9,7 @@ function App() {
     //   .then(res=>console.log(res.data))
     //   .catch(err=>console.log(err.message))
     // ipv6
-    axios.get('http://[::1]:3001')
+    axios.get('http://backend:3001')
       .then(res=>console.log(res.data))
       .catch(err=>console.log(err.message))
   },[])

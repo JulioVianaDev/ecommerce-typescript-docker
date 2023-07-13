@@ -4,10 +4,14 @@ import {json }from 'body-parser';
 import InitialRoute from './routes/initial'
 const cors = require('cors');
 const mongoose = require('mongoose')
+const dbUser = process.env.MONGODB_USER
+const dbPass = process.env.MONGODB_PASSWORD
+const dbPort = process.env.MONGODB_DOCKER_PORT
+const dbDatabase = process.env.MONGODB_DATABASE
 
 mongoose
   .connect(
-    'mongodb://mongodb:27017/docker-node-mongo',
+    `mongodb://mongodb:${dbPort}/${dbDatabase}`,
     { useNewUrlParser: true }
   )
   .then(() => console.log('MongoDB Conectado'))
