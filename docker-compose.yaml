@@ -1,24 +1,33 @@
 version: '3.9'
 services:
   mongodb:
-    image: mongo 
-    restart: always
+    image: mongo:latest
+    restart: unless-stopped
     env_file: ./envmongo/.env
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USER
-      - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
+    # environment:
+    #   - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USER
+    #   - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
     ports:
       - "27017:27017"
     volumes:
-      - mongodb:/data/db
+      - node-fullstack-teste1
     # networks:
     #   - minha-rede
   backend:
+    depends_on:
+      - mongodb
     build: ./backend
+    restart: unless-stopped
+    env_file: ./backend/.env
     ports:
       - "3001:3001"
-    env_file:
-      - ./backend/.env
+    # environment:
+    #   - NODE_PORT=3001
+    #   - DB_HOST=mongodb
+    #   - DB_USER=$MONGODB_USER
+    #   - DB_PASSWORD=$MONGODB_PASSWORD
+    #   - DB_NAME=$MONGODB_DATABASE
+    #   - DB_PORT=$MONGODB_DOCKER_PORT
     volumes:
       - ./backend:/app
     # networks:
@@ -36,6 +45,6 @@ services:
     # networks:
     #   - minha-rede
 volumes:
-  mongodb:
+  node-fullstack-teste1:
 # networks:
 #   minha-rede:
