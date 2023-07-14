@@ -6,10 +6,14 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME } = process.env;
 exports.connect = () => {
   mongoose
     .connect(
-      `mongodb://${DB_USER}:${DB_PASSWORD}@mongo:${DB_PORT}/${DB_NAME}?authSource=admin&directConnection=true`,
+      `mongodb://${DB_USER}:${DB_PASSWORD}@192.168.15.16:${DB_PORT}/${DB_NAME}?authSource=admin`,
       {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        directConnection: true,
+        serverSelectionTimeoutMS: 500000000,
+        socketTimeoutMS:0,
+        family:4
       }
     )
     .then(console.log('DB CONNECTION SUCCESSFULL'))
